@@ -6,14 +6,14 @@
 
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">{{ __('Editar') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="../actualizando-usuario/{{ $users->id }}">
                         @csrf
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nombre') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $users ->name }}" required autocomplete="name" autofocus>
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('surName') }}</label>
+                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Apellidos') }}</label>
 
                             <div class="col-md-6">
                                 <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $users ->surname }}" required autocomplete="surname" autofocus>
@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('phone') }}</label>
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Telefono') }}</label>
 
                             <div class="col-md-6">
                                 <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ $users ->phone }}" required autocomplete="phone" autofocus>
@@ -60,14 +60,14 @@
                             <select class="form-control" name="userType" value="">
                             <opttion value="">Seleccion cargo</opttion>
                             <option value="admin">Adiminstrador</option>
-                            <option value="vendor">Vendedor</option>
+                            <option value="vendedor">Vendedor</option>
                             
                             </select>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $users ->email }}" required autocomplete="email">
