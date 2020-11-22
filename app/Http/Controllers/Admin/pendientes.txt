@@ -1,0 +1,5 @@
+Arquitectura del proyecto
+Diagrama de clases de la base de datos
+Diagrama de caso de uso del sistema
+Modelo de procesos scrum
+Muckups

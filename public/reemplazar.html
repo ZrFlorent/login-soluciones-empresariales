@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="{{  str_replace('_' '-' app()- getlocale()) }}">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <link rel="stylesheet" href="css/modal.css">
+
+</head>
+
+<body>
+
+    <!-- <form method="post" action=''>
+        @csrf
+        <div class="container">
+            <label>Nombre</label>
+            <p><input type="text" name="name" class="form-control" /></p>
+            <label>Correo eletrónico</label>
+            <p><input type="email" name="correo" class="form-control" /></p>
+            <label>Motivo</label>
+            <p><input type="text" name="motivo" class="form-control" /></p>
+            <label>Mensaje</label>
+            <p> <textarea name="mensaje" class="form-control" rows="7"></textarea></p>
+
+        </div>
+    </form> -->
+
+    <br><br>
+    <!--    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+        modal </button>
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-slideout" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal sideout normal</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary float-right">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ -->
+    <div class="container">
+        <div id="app">
+            <form action="">
+                <h1>Crear nueva categoria</h1>
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input @blur="getCategory" @focus="div_aparecer= false" v-model="nombre" type="text"
+                        class="form-control" name="nombre" id="nombre">
+
+                    <label for="slug">Slug</label>
+                    <input readonly v-model="generarSlug" type=" text" class="form-control" name="slug" id="slug">
+                    <div v-if="div_aparecer" v-bind:class="div_clase_slug">
+                        {{ div_mensajeslug }}
+                    </div>
+                    <br v-if="div_aparecer">
+                    <label for="descripcion">Descripción</label>
+                    <textarea class="form-control" name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+
+                </div>
+                <input :disabled="deshabilitar_boton==1" type="submit" value="guardar"
+                    class="btn btn-primary float-right">
+            </form>
+            <br><br>
+            {{nombre}}
+            <br>
+            {{ generarSlug}}
+            <br>
+            {{ slug }}
+        </div>
+
+    </div>
+    <!-- 
+    <br><br><br>
+    <div class="container">
+        <form method="" action=''>
+            <label>Name</label>
+            <p><input type="text" name="nombre" class="form-control" /></p>
+            <label>Email</label>
+            <p><input type="text" name="email" class="form-control" /></p>
+            <label>Motivo</label>
+            <p><input type="text" name="subject" class="form-control" /></p>
+            <label>Mensaje</label>
+            <p> <textarea name="mensaje" class="form-control" rows="7"></textarea></p>
+            <input class="btn btn-primary float-right" type="submit" value="Enviar mensaje" id="btnEnviar" />
+        </form>
+    </div>
+ -->
+</body>
+
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            nombre: 'Shopiin',
+            slug: '',
+            div_mensajeslug: 'Slug existe',
+            div_clase_slug: '',
+            div_aparecer: false,
+            deshabilitar_boton: 0
+
+        },
+        computed: {
+            generarSlug: function () {
+                var char = {
+                    "á": "a", "é": "e", "í": "i", "ó": "o", "ú": "u",
+                    "Á": "A", "É": "E", "Í": "I", "Ó": "O", "Ú": "U",
+                    "ñ": "n", "Ñ": "N", " ": "-", "_": "-"
+                }
+                var expr = /[áéíóúÁÉÍÓÚÑñ_ ]/g;
+
+                this.slug = this.nombre.trim().replace(expr, function (e) {
+                    return char[e]
+                }).toLowerCase()
+
+                return this.slug;
+            }
+        },
+        methods: {
+            getCategory() {
+                let url = 'api/category/' + this.slug;
+                axios.get(url).then(response => {
+                    this.div_mensajeslug = response.data;
+                    if (this.div_mensajeslug === "Slug Disponible") {
+                        this.div_clase_slug = 'badge badge-success';
+                        this.deshabilitar_boton = 0;
+                    } else {
+                        this.div_clase_slug = 'badge badge-danger';
+                        this.deshabilitar_boton = 1;
+                    }
+                    this.div_aparecer = true;
+
+                })
+            }
+        }
+    });
+
+    $('#myModal').css("margin-right", $(window).width() - $('.modal-content').width());
+</script>
+
+</html>
