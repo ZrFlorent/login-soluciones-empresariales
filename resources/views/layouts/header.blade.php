@@ -30,6 +30,10 @@
     <link type="text/css" href="{{ asset('css/estiloproductos.css') }}" rel="stylesheet">
 
 
+    @yield('css-extra')
+
+
+
 </head>
 
 <body>
@@ -77,6 +81,7 @@
 
 
     </div>
+    @yield('js-extra')
 
 
     <script src="{{ asset('js/jquery-3.4.1.min.js') }}"></script>

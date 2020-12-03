@@ -61,7 +61,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 }); */
 Route::get('/', 'Front\IndexController@getCategory');
-Route::post('/','MyMailController@enviarMensaje');
+Route::post('/','@MyMailControllerenviarMensaje');
 Route::get('/get/{id}', 'Front\IndexController@getProductos');
 
 
@@ -74,6 +74,8 @@ Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 Route::post('/cart/switchToSaveForLater/{product}', 'CartController@switchToSaveForLater')->name('cart.switchToSaveForLater');
 
+
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
 
 
 Route::get('borrar', function(){
@@ -89,3 +91,7 @@ Route::get('Historia-quienes-somos-vision-mision', 'Front\IndexController@Blog3'
 Route::get('Gel-antibacterial-sanitizantes-desinfectantes-antibacteriano-coronavirus', 'Front\IndexController@Blog2')->name('Gel-antibacterial-sanitizantes-desinfectantes-antibacteriano-coronavirus');
 Route::get('Medidas-protección-contra-virus-coronavirus-bacterias-germenes', 'Front\IndexController@Blog4')->name('Medidas-protección-contra-virus-coronavirus-bacterias-germenes');
 
+
+
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+Route::get('/Proceso-completado', 'PagoEmailController@index')->name('confirmado.index');

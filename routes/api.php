@@ -26,18 +26,17 @@ Route::group(['middleware' => ['auth','admin']], function(){
  /*    Route::get('/administrar-usuarios', 'Admin\AdminUsuarios@consultar')->name('administrar-usuarios');
     Route::get('/editar-usuarios/{id}', 'Admin\AdminUsuarios@editar');
     Route::post('/actualizando-usuario/{id}', 'Admin\AdminUsuarios@actualizar');
-    Route::delete('/eliminar-usuarios/{id}', 'Admin\AdminUsuarios@eliminar'); */
+    Route::delete('/eliminar-usuarios/{id}', 'Admin\AdminUsuarios@eliminar'); 
     Route::apiResource('category','API\CategoryController')->names('api.category');
     Route::apiResource('product','API\ProductController')->names('api.product');
     Route::delete('/eliminarimagen/{id}','API\ProductController@eliminarimagen')->name('api.eliminarimagen');
     
-    Route::get('autocompletar', 'API\AutocompleteController@autocompletar')->name('autocompletar');
+    Route::get('autocompletar', 'API\AutocompleteController@autocompletar')->name('autocompletar');*/
     
 
 });
-/* Route::apiResource('category','API\CategoryController')->names('api.category');
+ Route::apiResource('category','API\CategoryController')->names('api.category');
 Route::apiResource('product','API\ProductController')->names('api.product');
 Route::delete('/eliminarimagen/{id}','API\ProductController@eliminarimagen')->name('api.eliminarimagen');
 
 Route::get('autocompletar', 'API\AutocompleteController@autocompletar')->name('autocompletar');
- */

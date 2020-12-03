@@ -21,7 +21,7 @@
                     <div class="row">
                         <!-- Product main img -->
                         <div class="col-md-7 col-md-push-2">
-                            <div id="product-main-img">
+                            <div id="product-main-img" class="product-main-img">
                                 @if ($producto->images->count() <= 0)
                                 @else
                                     <div class="product-preview">

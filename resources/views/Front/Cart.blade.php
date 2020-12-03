@@ -134,6 +134,11 @@
                                         Importe temporal
                                         <span>${{ Cart::subtotal() }}</span>
                                     </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
+                                        Impuesto
+                                        <span>${{ Cart::tax() }}</span>
+                                    </li>
 
                                     <li
                                         class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
@@ -142,15 +147,13 @@
                                             </strong>
 
                                         </div>
-                                        <span><strong>${{ Cart::subtotal() }} <br>
+                                        <span><strong>${{ Cart::total() }} <br>
                                             </strong></span>
                                     </li>
                                 </ul>
 
-                                <button style="padding-left: 115px; padding-right: 115px;" type="submit"
-                                    class="add-to-cart-btn btn-blanco ripple btn-primary"><i
-                                        class="fa fa-shopping-cart"></i>
-                                    Continuar</button>
+                                <a href=" {{ route('checkout.index') }}"
+                                    class="add-to-cart-btn btn-blanco ripple btn-primary"> Continuar</a>
                             </div>
                             <!-- Card -->
 
